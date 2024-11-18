@@ -17,6 +17,6 @@ export default defineConfig({
     },
     outDir: 'dist',
     assetsDir: 'assets',
-    copyPublicDir: true // This ensures public files like ads.txt are copied
+    copyPublicDir: true
   }
 });
