@@ -5,15 +5,6 @@ import { Search, FileText } from 'lucide-react';
 
 const SearchPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
-
-  const categories = [
-    { id: 'all', name: 'All Categories' },
-    { id: 'civil', name: 'Civil Law' },
-    { id: 'criminal', name: 'Criminal Law' },
-    { id: 'family', name: 'Family Law' },
-    { id: 'business', name: 'Business Law' }
-  ];
 
   const articles = [
     {
@@ -65,9 +56,7 @@ const SearchPage = () => {
                          article.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          article.category.toLowerCase().includes(searchQuery.toLowerCase());
     
-    const matchesCategory = selectedCategory === 'all' || article.category.toLowerCase().includes(selectedCategory);
-    
-    return matchesSearch && matchesCategory;
+    return matchesSearch;
   });
 
   // Focus search input on page load
@@ -112,29 +101,10 @@ const SearchPage = () => {
               <Search className="absolute left-4 top-3.5 h-5 w-5 text-gray-400" />
             </div>
 
-            {/* Category Filters */}
-            <div className="mt-6 flex flex-wrap gap-4">
-              {categories.map(category => (
-                <button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  className={`px-4 py-2 rounded-full transition-colors ${
-                    selectedCategory === category.id
-                      ? 'bg-indigo-600 text-white'
-                      : 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200'
-                  }`}
-                >
-                  {category.name}
-                </button>
-              ))}
-            </div>
-
             {/* Search Results */}
             <div className="mt-8">
               <h2 className="text-lg font-semibold mb-4">
-                {searchQuery || selectedCategory !== 'all'
-                  ? `Search Results (${filteredArticles.length})`
-                  : 'All Articles'}
+                {searchQuery ? `Search Results (${filteredArticles.length})` : 'All Articles'}
               </h2>
               
               {filteredArticles.length > 0 ? (
