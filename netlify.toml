@@ -3,6 +3,24 @@
   publish = "dist"
 
 [[redirects]]
+  from = "/ads.txt"
+  to = "/ads.txt"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap.xml"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/robots.txt"
+  to = "/robots.txt"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
@@ -15,3 +33,9 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Content-Security-Policy = "default-src 'self' 'unsafe-inline' 'unsafe-eval' *.googleapis.com *.gstatic.com *.google.com *.google-analytics.com *.doubleclick.net *.googletagmanager.com *.googleadservices.com *.googlesyndication.com *.unsplash.com data:; img-src 'self' *.unsplash.com data: blob: https:; connect-src 'self' *.google-analytics.com *.doubleclick.net *.googleapis.com;"
+
+[[headers]]
+  for = "/ads.txt"
+    [headers.values]
+    Content-Type = "text/plain"
+    Cache-Control = "no-cache"
