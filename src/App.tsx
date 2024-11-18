@@ -23,7 +23,7 @@ import PedestrianAccident from './pages/articles/PedestrianAccident';
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-blue-200">
+    <div className="min-h-screen flex flex-col bg-blue-50">
       <ScrollToTop />
       <Navbar />
       <main className="flex-grow">
