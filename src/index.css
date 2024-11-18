@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.adsbygoogle-container {
+  min-height: 100px;
+  margin: 1rem 0;
+  display: block;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.adsbygoogle {
+  display: block;
+  text-align: center;
+}
