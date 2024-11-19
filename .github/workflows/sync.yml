@@ -15,6 +15,15 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.PAT }}
 
+      - name: Configure Git
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      - name: Pull Latest Changes
+        run: |
+          git pull origin main --rebase
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -29,8 +38,6 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
           git add .
-          git commit -m "Auto-sync changes" || echo "No changes to commit"
+          git diff-index --quiet HEAD || git commit -m "Auto-sync changes"
           git push https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git HEAD:main
